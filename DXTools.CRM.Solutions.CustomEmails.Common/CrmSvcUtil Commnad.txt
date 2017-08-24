@@ -1,0 +1,1 @@
+﻿CrmSvcUtil.exe /url:https://organisationname.api.crm4.dynamics.com/XRMServices/2011/Organization.svc /out:"GeneratedCode.cs" /username:"" /password:"" /namespace:"DXTools.CRM.Solutions.Common.Messages" /generateActions

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="DXTools.CRM.Solutions.CustomEmails.Workflows.dll" Id="71adfa21-c988-e311-a57c-d89d6764562c" IsolationMode="Sandbox" SourceType="Database">
+      <WorkflowTypes>
+        <WorkflowType FriendlyName="Create Custom Email Activity" Name="CreateCustomEmail" Description="Create an email based on custom template" WorkflowActivityGroupName="DXTools" Id="f9d89532-6c1e-e611-80e3-5065f38a3bc1" TypeName="DXTools.CRM.Solutions.CustomEmails.Workflows.CreateCustomEmailActivity" />
+        <WorkflowType FriendlyName="Send Email Activity" Name="SendEmail" Description="Send an existing email" WorkflowActivityGroupName="DXTools" Id="fcd89532-6c1e-e611-80e3-5065f38a3bc1" TypeName="DXTools.CRM.Solutions.CustomEmails.Workflows.SendEmailActivity" />
+        <WorkflowType FriendlyName="Get Process Properties" Name="GetProcessProperties" Description="Send an existing email" WorkflowActivityGroupName="DXTools" Id="fbd89532-6c1e-e611-80e3-5065f38a3bc1" TypeName="DXTools.CRM.Solutions.CustomEmails.Workflows.GetProcessPropertiesActivity" />
+        <WorkflowType FriendlyName="Does Attachment Exist" Name="DoesAttachmentExist" Description="Check if the given filenames exist as CRM email template attachments" WorkflowActivityGroupName="DXTools" Id="fad89532-6c1e-e611-80e3-5065f38a3bc1" TypeName="DXTools.CRM.Solutions.CustomEmails.Workflows.DoesAttachmentExistActivity" />
+      </WorkflowTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>

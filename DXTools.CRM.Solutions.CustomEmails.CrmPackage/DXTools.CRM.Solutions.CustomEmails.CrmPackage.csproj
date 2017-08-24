@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>a06d98f7-6313-4755-8b5b-634cd6cd7764</ProjectGuid>
+    <ProjectTypeGuids>{88A30576-7583-4F75-8136-5EFD2C14ADFF}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DXTools.CRM.Solutions.CustomEmails.DXTools.CRM.Solutions.CustomEmails.CrmPackage</RootNamespace>
+    <AssemblyName>DXTools.CRM.Solutions.CustomEmails.DXTools.CRM.Solutions.CustomEmails.CrmPackage</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputFile>DXTools.CRM.Solutions.CustomEmails.CrmPackage.zip</OutputFile>
+    <Name>DXTools.CRM.Solutions.CustomEmails.CrmPackage</Name>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <RegisterPlugin Include="RegisterFile.crmregister">
+      <DisplayName>RegisterFile</DisplayName>
+      <UniqueName>dxtools_RegisterFile</UniqueName>
+      <WebResourceType>NotSupported</WebResourceType>
+    </RegisterPlugin>
+    <Folder Include="WebResources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DXTools.CRM.Solutions.CustomEmails.Common\DXTools.CRM.Solutions.CustomEmails.Common.csproj">
+      <Name>DXTools.CRM.Solutions.CustomEmails.Common</Name>
+      <Project>{63652ffa-3fd6-48ec-84fd-c8605ff5c9d8}</Project>
+      <Private>True</Private>
+      <SilverlightApplication>False</SilverlightApplication>
+    </ProjectReference>
+    <ProjectReference Include="..\DXTools.CRM.Solutions.CustomEmails.Workflows\DXTools.CRM.Solutions.CustomEmails.Workflows.csproj">
+      <Name>DXTools.CRM.Solutions.CustomEmails.Workflows</Name>
+      <Project>{725acba4-d53d-4522-ac32-99b0c7edcc3a}</Project>
+      <Private>True</Private>
+      <SilverlightApplication>False</SilverlightApplication>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+			 Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+  <PropertyGroup>
+    <TempDirectory>$(OutDir)Temp</TempDirectory>
+    <WorkflowProjectName>DXTools.CRM.Solutions.CustomEmails.Workflows</WorkflowProjectName>
+    <CommonProjectName>DXTools.CRM.Solutions.CustomEmails.Common</CommonProjectName>
+    <JSONNET>Newtonsoft.Json</JSONNET>
+    <KeyName>DXTools.snk</KeyName>
+    <ILMergeCommand>"..\ReferencedAssemblies\ILMerge\ILMerge.exe" /keyfile:"..\Keys\$(KeyName)" /target:library /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319"</ILMergeCommand>
+  </PropertyGroup>
+  <ItemGroup>
+    <MergedSourceFiles Include="$(TempDirectory)\*.*">
+    </MergedSourceFiles>
+  </ItemGroup>
+  <Target Name="PostBuildEvent">
+    <Message Text="Merging ... $(WorkflowProjectName) with $(CommonProjectName)" Importance="high" />
+    <MakeDir Directories="$(TempDirectory)" />
+    <Exec Command="$(ILMergeCommand) /out:&quot;$(TempDirectory)\$(WorkflowProjectName).dll&quot; &quot;$(OutDir)$(WorkflowProjectName).dll&quot; &quot;$(OutDir)$(CommonProjectName).dll&quot; &quot;..\ReferencedAssemblies\JSON.NET\Net40\$(JSONNET).dll&quot;" />
+    <Copy OverwriteReadOnlyFiles="true" SourceFiles="@(MergedSourceFiles)" DestinationFolder="$(OutDir)" />
+    <Message Text="Merge completed successfully" Importance="high" />
+  </Target>
+  <Target Name="AfterClean">
+    <Message Text="Clean Merge Started..." Importance="high" />
+    <RemoveDir Directories="$(OutDir)Temp" />
+    <Message Text="Clean completed successfully" Importance="high" />
+  </Target>
+</Project>

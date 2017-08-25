@@ -1,2 +1,6 @@
-# dynamics-custom-emails
-Dynamics Custom Email is an utility for Microsoft Dynamics 365 (CRM) which provides several capabilities to extend the email functionality of the platform based on supported customisations.
+![Logo](https://ramontebar.files.wordpress.com/2017/08/dxtools-custom-emails-logo.png) 
+# **Welcome to the Dynamics Custom Emails Project!** 
+
+**Dynamics Custom Email** is an extension for Microsoft Dynamics 365 (CRM) which gives you the _**ability to send emails from a process (e.g. workflow, action) based on an Email Template with dynamic fields**_ (yes, unfortunately that is not an out-of-the-box feature yet!).
+
+See the [Wiki](https://github.com/rtebar/dynamics-custom-emails/wiki) section for more details and documention.

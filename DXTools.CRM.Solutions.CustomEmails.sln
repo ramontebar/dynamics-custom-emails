@@ -28,6 +28,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ILMerge", "ILMerge", "{0CA6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXTools.CRM.Solutions.CustomEmails.UnitTests", "DXTools.CRM.Solutions.CustomEmails.UnitTests\DXTools.CRM.Solutions.CustomEmails.UnitTests.csproj", "{54A57B3A-DF33-4C6C-ABF2-826650B5EDED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON.NET", "JSON.NET", "{A9B3C4C1-C7C0-43CF-B08D-1C2AF0D0E652}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{730E264D-F066-4E5E-8F14-B27AEA1A27F1}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedAssemblies\JSON.NET\Net40\Newtonsoft.Json.dll = ReferencedAssemblies\JSON.NET\Net40\Newtonsoft.Json.dll
+		ReferencedAssemblies\JSON.NET\Net40\Newtonsoft.Json.xml = ReferencedAssemblies\JSON.NET\Net40\Newtonsoft.Json.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XrmTestFramework", "XrmTestFramework", "{71DBFC53-E071-44EE-B497-737AE300F362}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedAssemblies\XrmTestFramework\Xrm.Framework.Test.dll = ReferencedAssemblies\XrmTestFramework\Xrm.Framework.Test.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,9 +75,18 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0CA6678B-0D4E-431A-B54A-37EBAD4852A0} = {6CED3EC4-6BB0-40BC-9C97-588F154D8043}
+		{A9B3C4C1-C7C0-43CF-B08D-1C2AF0D0E652} = {6CED3EC4-6BB0-40BC-9C97-588F154D8043}
+		{730E264D-F066-4E5E-8F14-B27AEA1A27F1} = {A9B3C4C1-C7C0-43CF-B08D-1C2AF0D0E652}
+		{71DBFC53-E071-44EE-B497-737AE300F362} = {6CED3EC4-6BB0-40BC-9C97-588F154D8043}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2047E4BA-D1A4-4C5D-847C-412ECF7BC870}
+	EndGlobalSection
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
+	EndGlobalSection
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
 	EndGlobalSection
 	GlobalSection(CRMSolutionProperties) = preSolution
 		SolutionIsBoundToCRM = True

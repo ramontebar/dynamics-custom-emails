@@ -10,4 +10,10 @@ namespace DXTools.CRM.Solutions.CustomEmails.IntegrationTests
     {
         IN = 503530000
     }
+
+    internal enum State
+    {
+        Active = 0,
+        Inactive = 1
+    }
 }

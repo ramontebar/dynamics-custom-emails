@@ -39,15 +39,17 @@ namespace DXTools.CRM.Solutions.CustomEmails.Common.TextProcessing.Expressions
             if (!record.Contains(expressionValue))
                 return string.Empty;
 
-            object crmAttribute = record[expressionValue];
+            var crmAttribute = record[expressionValue];
 
             if (attributeExpression.ChildExpressions.Count == 0)
             {
-                if (crmAttribute.GetType() == typeof(Money))
+                Type attributeType = crmAttribute.GetType();
+
+                if (attributeType == typeof(Money))
                     return ((Money)crmAttribute).Value;
-                else if (crmAttribute.GetType() == typeof(EntityReference))
+                else if (attributeType == typeof(EntityReference))
                     return ((EntityReference)crmAttribute).Name;
-                else if (crmAttribute.GetType() == typeof(OptionSetValue))
+                else if (attributeType == typeof(OptionSetValue))
                     return RetrieveOptionSetLabel(recordReference, expressionValue, record[expressionValue] as OptionSetValue, organizationService);
                 else
                     return crmAttribute;
@@ -94,20 +96,26 @@ namespace DXTools.CRM.Solutions.CustomEmails.Common.TextProcessing.Expressions
 
             RetrieveAttributeResponse attributeResponse = organizationService.Execute(attributeRequest) as RetrieveAttributeResponse;
 
-            OptionMetadataCollection options = ((PicklistAttributeMetadata)attributeResponse.AttributeMetadata).OptionSet.Options;
-            foreach (OptionMetadata option in options)
+            if (attributeResponse.AttributeMetadata is EnumAttributeMetadata)
             {
-                if (option != null && option.Value == optionSetValue.Value)
+                OptionMetadataCollection options = ((EnumAttributeMetadata)attributeResponse.AttributeMetadata).OptionSet?.Options;
+                if (options != null)
                 {
-                    if (option.Label == null
-                        || option.Label.UserLocalizedLabel == null)
-                        return string.Empty;
-                    else
-                        return option.Label.UserLocalizedLabel.Label;
+                    foreach (OptionMetadata option in options)
+                    {
+                        if (option != null && option.Value == optionSetValue.Value)
+                        {
+                            if (option.Label == null
+                                || option.Label.UserLocalizedLabel == null)
+                                return string.Empty;
+                            else
+                                return option.Label.UserLocalizedLabel.Label;
+                        }
+                    }
                 }
             }
 
-            return string.Empty;
+            return string.Empty; //Unexpected type
         }
     }
 }

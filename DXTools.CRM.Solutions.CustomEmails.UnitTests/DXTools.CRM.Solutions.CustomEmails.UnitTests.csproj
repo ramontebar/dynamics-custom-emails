@@ -153,6 +153,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Common\TextProcessing\Functions\TextProcessorTest_ToLocalDateTimeFunction.cs" />
+    <Compile Include="Common\TextProcessing\DuplicateAttributesTest.cs" />
     <Compile Include="StubData.cs" />
     <Compile Include="Common\TextProcessing\Functions\TextProcessorTest_ToStringFunction.cs" />
     <Compile Include="Common\TextProcessing\BasicTypes\TextProcessorTest_OptionSet.cs" />

@@ -51,6 +51,9 @@ namespace DXTools.CRM.Solutions.CustomEmails.IntegrationTests.Common.TextProcess
 
             //Test Money type
             Assert.AreEqual(((Money)payment["dxtools_amount"]).Value.ToString(), textProcessor.Process("{dxtools_amount}", payment.ToEntityReference()));
+
+            //Test State (statecode) type
+            Assert.AreEqual(Enum.GetName(typeof(State), State.Active), textProcessor.Process("{statecode}", payment.ToEntityReference()));
         }
 
         private Entity CreateContact()

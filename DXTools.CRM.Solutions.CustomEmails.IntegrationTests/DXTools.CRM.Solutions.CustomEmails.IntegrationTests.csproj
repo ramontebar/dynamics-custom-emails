@@ -113,7 +113,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="Xrm.Framework.Test, Version=7.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Xrm.Framework.Test.7.0.0.1\lib\net452\Xrm.Framework.Test.dll</HintPath>
+      <HintPath>..\ReferencedAssemblies\XrmTestFramework\Xrm.Framework.Test.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
